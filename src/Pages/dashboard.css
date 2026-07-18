@@ -1,0 +1,35 @@
+
+.my-mansory-grid {
+    display: flex;
+    margin-left: -32px;
+    width: auto;
+}
+.my-mansory-grid_column{
+    padding-left: 32px;
+    background-clip: padding-box;
+    flex: 1;
+}
+
+
+
+.custom-scrollbar::-webkit-scrollbar{
+    width: 5px;
+}
+.custom-scrollbar::-webkit-scrollbar-track{
+    background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb{
+    background: #E2E8F0;
+    border-radius: 10px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover{
+    background:#CBD5E1 ;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE/Edge */
+  scrollbar-width: none; /* Firefox */
+}

@@ -1,0 +1,223 @@
+@import "tailwindcss";
+
+
+@layer base {
+  body {
+    @apply bg-gray-50 text-gray-900;
+  }
+}
+
+@layer components {
+  .dotted-bg {
+    background-image: radial-gradient(circle, #d1d5db 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+}
+
+@theme {
+  --animate-blob: blob 7s infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-float-delayed: float 6s ease-in-out 3s infinite;
+  --animate-spin-slow: spin 8s linear infinite;
+
+  @keyframes blob {
+    0% {
+      transform: translate(0px, 0px) scale(1);
+    }
+
+    33% {
+      transform: translate(30px, -50px) scale(1.1);
+    }
+
+    66% {
+      transform: translate(-20px, 20px) scale(0.9);
+    }
+
+    100% {
+      transform: translate(0px, 0px) scale(1);
+    }
+  }
+
+  @keyframes float {
+    0% {
+      transform: translateY(0px);
+    }
+
+    50% {
+      transform: translateY(-20px);
+    }
+
+    100% {
+      transform: translateY(0px);
+    }
+  }
+
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  --animate-fade-in-up: fadeInUp 0.8s ease-out forwards;
+}
+
+
+
+
+@layer utilities {
+  @keyframes slideIn {
+    0% {
+      transform: translateX(-100%);
+    }
+
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slideOut {
+    0% {
+      transform: translateX(0);
+    }
+
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeOut {
+    0% {
+      opacity: 1;
+    }
+
+    100% {
+      opacity: 0;
+    }
+  }
+
+  .animate-slideIn {
+    animation: slideIn 0.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  }
+
+  .animate-slideOut {
+    animation: slideOut 0.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  }
+
+  .animate-fadeIn {
+    animation: fadeIn 0.4s ease-out forwards;
+  }
+
+  .animate-fadeOut {
+    animation: fadeOut 0.4s ease-in forwards;
+  }
+}
+
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slideDown {
+  animation: slideDown 0.3s ease-out forwards;
+}
+
+
+
+/*  */
+.prose-content span[style] {
+  color: inherit; 
+}
+
+.prose-content ul {
+  list-style-type: disc !important;
+  padding-left: 1.25rem !important;
+  margin: 0.75rem 0 !important;
+}
+
+.prose-content ol {
+  list-style-type: decimal !important;
+  padding-left: 1.25rem !important;
+  margin: 0.75rem 0 !important;
+}
+
+.prose-content li {
+  margin-bottom: 0.25rem !important;
+}
+
+.prose-content p {
+  margin: 0.5rem 0 !important;
+}
+
+.inner-shadow {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.15);
+}
+
+
+.tiptap-editor {
+  outline: none;
+}
+
+.tiptap-editor ul {
+  list-style-type: disc !important;
+  margin-left: 1.5rem !important;
+  margin-top: 0.5rem !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.tiptap-editor ol {
+  list-style-type: decimal !important;
+  margin-left: 1.5rem !important;
+  margin-top: 0.5rem !important;
+  margin-bottom: 0.5rem !important;
+}
+
+
+.tiptap-editor li {
+  display: list-item !important;
+  margin-bottom: 0.25rem !important;
+}
+
+
+.tiptap-editor ul[data-type="taskList"] {
+  list-style: none !important;
+  margin-left: 0 !important;
+}
+
+.tiptap-editor blockquote {
+  border-left: 3px solid #e5e7eb;
+  padding-left: 1rem;
+  margin-left: 0;
+  margin-right: 0;
+  font-style: italic;
+  color: #4b5563; 
+}
+
+.prose blockquote {
+  border-left: 3px solid #e5e7eb;
+  padding-left: 1rem;
+  font-style: italic;
+}
