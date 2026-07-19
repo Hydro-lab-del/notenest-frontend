@@ -1,97 +1,78 @@
-# Nest Notes & Tasks Dashboard 📝
+# Nest Notes Dashboard 📝
 
-A premium, modern, and highly interactive note-taking and task-management web application. Built with **React 19**, **Vite**, and **Tailwind CSS**, featuring responsive glassmorphism designs, real-time rich text editing, search capabilities, and a personalized user profile dashboard.
+A modern note-taking and task-management web app built with React, Vite, and Tailwind CSS. The project combines a polished landing experience with a protected dashboard where users can create, edit, organize, and manage notes through a connected API backend.
 
----
+## ✨ What the app offers
 
-## ✨ Features
+- Secure authentication flow with login, registration, email verification, password reset, refresh sessions, and logout
+- Protected routes for authenticated users and a dedicated dashboard experience
+- Rich-text note editing with TipTap, including formatting, checklists, reminders, and background styling
+- Note organization tools such as pinning, favorites, trash, restore, and permanent delete
+- A profile page with account information, stats, and security-related actions
+- Responsive UI with a sidebar, mobile navigation, notifications, and a floating note composer
 
-- **🔒 Advanced Auth & Security**: Secured login and registration flow with email verification notices, status checking, password retrieval, and route protection.
-- **📝 TipTap Rich Text Editor**: Real-time formatting (Bold, Italic, Strikethrough, Underline, Bullet Lists, Highlights, Blockquotes, Undo/Redo) with customizable note background palettes.
-- **✅ Interactive Todo Checklists**: Toggle task items dynamically inside card canvases with responsive state sync.
-- **📌 Pins, Favorites & Trash**: Organize critical items instantly. Pin important notes, mark items as favorites, move notes to trash, restore notes, or permanently wipe out storage space.
-- **📊 Real-time User Profile Dashboard**: A personalized visual metrics panel showcasing:
-  - Account statistics (total notes, favorited notes, todo list ratio).
-  - Dynamic todo completion progress tracker.
-  - Custom note-canvas background color preference (cached via localStorage).
-  - Secure credential management (change password panel).
+## 🛠️ Tech stack
 
----
+- React 19
+- Vite 7
+- React Router DOM 7
+- Tailwind CSS 4
+- TipTap editor extensions
+- Axios for API requests
+- Lucide React, react-hot-toast, date-fns, dompurify, and react-masonry-css
 
-## 🛠️ Technology Stack
-
-- **Framework**: [React 19](https://react.dev/) + [Vite](https://vitejs.dev/) (VClient setup)
-- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
-- **Text Editor**: [TipTap Rich Text Suite](https://tiptap.dev/)
-- **Routing**: [React Router Dom v7](https://reactrouter.com/)
-- **Icons**: [Lucide React](https://lucide.dev/)
-- **HTTP Client**: [Axios](https://axios-http.com/)
-- **Utility Libraries**: `date-fns` (for relative dates), `dompurify` (for XSS sanitization)
-
----
-
-## 📂 Codebase Structure
+## 📁 Project structure
 
 ```text
 src/
-├── assets/             # Global media assets & dynamic backgrounds
-├── Components/
-│   ├── Header/         # Dashboard header with search, notifications, & avatars
-│   ├── Note/           # Note card, RichText editor integration, & modals
-│   ├── NotesGrid/      # Masonry layout grid for note sorting & displaying
-│   ├── SideBar/        # Desktop & mobile responsive sidebar navigations
-│   └── NavItem.jsx     # Navigation menu link wrappers
-│   └── PageLoader.jsx  # Loading loader suspensions
-│   └── ProtectedRoute  # Route shield checking verification status
-├── Context/
-│   ├── AuthContext.js  # Named export for AuthContext object
-│   ├── AuthProvider.jsx# State provider handling login/logout & status checks
-│   ├── NoteContext.js  # Named export for NoteContext object
-│   └── NoteProvider.jsx# Note CRUD logic, infinite scrolling, & sorting
-├── Pages/
-│   ├── AuthPage.jsx    # Sleek login & sign-up forms with sliding transitions
-│   ├── Dashboard.jsx   # Nested router outlet container for the app workspace
-│   ├── Landing.jsx     # Product welcome landing page
-│   ├── NotFound.jsx    # Custom 404 fallback page
-│   ├── Profile.jsx     # Premium user settings, stats panel, & personalization
-│   ├── ResetPassword   # Token-based password recovery lander
-│   └── VerifyNotice.jsx# Polling card check & verification resend panel
-├── App.jsx             # Route layout setup & lazy components bundle loader
-└── main.jsx            # React root mount point & context wrapper
+├── Components/         # Reusable UI pieces such as navbar, sidebar, note cards, and modals
+├── Context/            # Auth, note, and notification state providers
+├── Pages/              # Landing page, auth views, dashboard, profile, and error pages
+├── utils/              # Shared API configuration
+├── App.jsx             # Route setup and protected layout
+└── main.jsx            # App entry point
 ```
 
----
-
-## 🚀 Getting Started
+## 🚀 Getting started
 
 ### Prerequisites
 
-Make sure you have [Node.js](https://nodejs.org/) installed on your machine.
+- Node.js 18+ recommended
+- A working backend API that exposes the auth and notes endpoints
 
 ### Installation
 
-1. Clone the project repository and navigate into it.
-2. Install all dependencies:
-   ```bash
-   npm install
-   ```
+1. Clone the repository
+2. Install dependencies:
 
-### Development Environment
+```bash
+npm install
+```
 
-To start the Vite hot-reloading development server locally:
+3. Create a local environment file:
+
+```bash
+VITE_API_URL=http://localhost:5000
+```
+
+4. Start the development server:
+
 ```bash
 npm run dev
 ```
-The app will run at `http://localhost:5173`. Make sure the companion backend API server is running on `http://localhost:5000` to handle user auth & database note syncing.
 
-### Build & Lint Checks
+The frontend will run at http://localhost:5173 by default.
 
-To run ESLint code analysis:
+## 🧪 Available scripts
+
 ```bash
-npm run lint
+npm run dev      # start the Vite development server
+npm run build    # build the production bundle
+npm run preview  # preview the built app locally
+npm run lint     # run ESLint checks
 ```
 
-To compile a highly optimized production static bundle in the `dist/` directory:
-```bash
-npm run build
-```
+## 🔗 Notes
+
+- The app expects a backend API to be available through the configured API URL.
+- Auth and note state are managed through context providers in the src/Context folder.

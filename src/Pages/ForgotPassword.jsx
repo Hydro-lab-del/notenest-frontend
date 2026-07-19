@@ -13,7 +13,7 @@ const ForgotPassword = () => {
     try {
       setLoading(true);
       const res = await api.post("/auth/forgot-password", { email });
-      toast.success(res.data.data);
+      toast.success(res.data.message);
     } catch (err) {
       toast.error(err.response?.data?.message || "Something went wrong");
     } finally {
