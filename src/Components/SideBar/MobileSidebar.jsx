@@ -3,7 +3,7 @@ import { AuthContext } from '../../Context/AuthContext';
 import { useNavigate } from "react-router-dom";
 import toast from 'react-hot-toast';
 
-import { X, Home, Star, User, Settings, LogOut, Trash2 } from 'lucide-react';
+import { X, Home, Heart, User, LogOut, Trash2, Clock } from 'lucide-react';
 import Logo from '../Logo';
 import NavItem from '../NavItem';
 
@@ -48,7 +48,8 @@ const MobileSidebar = ({ isOpen, onClose, }) => {
                 <div className="flex flex-col items-center justify-between h-full px-3 mt-10">
                     <nav className="flex flex-col gap-2 w-[90%]">
                         <NavItem icon={Home} label="Home" to="/"  mobile  />
-                        <NavItem icon={Star} label="Favorite" to='/favorites'  mobile />
+                        <NavItem icon={Heart} label="Favorite" to='/favorites'  mobile />
+                        <NavItem icon={Clock} label="Reminders" to='/reminders' mobile />
                         <NavItem icon={User} label="Profile"  to='/profile' mobile />
                         <NavItem icon={Trash2} label="Trash"  to="/trash" mobile />
                     </nav>

@@ -1,5 +1,5 @@
 import { memo, useState, useContext } from "react";
-import { formatDistanceToNow } from 'date-fns';
+import { formatDistanceToNow, differenceInDays } from 'date-fns';
 import NoteMenuPanel from '../Note/NoteMenuPanel';
 import DOMPurify from 'dompurify';
 
@@ -235,6 +235,13 @@ const NoteCard = memo(({ note }) => {
         <span className='text-[11px] font-medium text-gray-400'>
           {formatDistanceToNow(new Date(note.updatedAt || note.createdAt), { addSuffix: true })}
         </span>
+
+        {view === 'trash' && note.deletedAt && (
+            <span className="text-[10px] font-semibold text-red-500 bg-red-50 px-2 py-0.5 rounded-full border border-red-100">
+              {Math.max(0, 30 - differenceInDays(new Date(), new Date(note.deletedAt)))} days left
+            </span>
+        )}
+
         <div className={`p-1.5 rounded-lg flex items-center justify-between
           ${isPinned ? 'text-yellow-700 bg-yellow-200/50'
             : ' bg-gray-50 text-gray-400'}`}>
