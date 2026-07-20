@@ -81,7 +81,7 @@ const MenuBar = ({ editor }) => {
   ];
 
   return (
-    <div className="flex flex-wrap items-center gap-0.5 p-1.5 bg-gray-50 border-b border-gray-100 sticky top-0 z-10">
+    <div className="flex flex-wrap items-center gap-0.5 p-1.5 bg-gray-50 border-b border-gray-100 sticky top-0 z-10 rounded-t-2xl">
 
       <button
         type='button'
@@ -195,7 +195,7 @@ const MenuBar = ({ editor }) => {
         </button>
 
         {showColorPicker && (
-          <div className='absolute top-full right-0 sm:left-0 sm:right-auto mt-1 p-2 bg-white rounded-lg shadow-xl border border-gray-100 flex flex-wrap w-[140px] sm:w-auto sm:flex-nowrap gap-1 z-20'>
+          <div className='absolute top-full left-1/2 -translate-x-1/2 mt-1 p-2 bg-white rounded-lg shadow-xl border border-gray-100 flex flex-wrap justify-center w-[140px] sm:w-auto sm:flex-nowrap gap-1 z-20'>
             {colors.map(color => (
               <button
                 key={color}
@@ -226,7 +226,7 @@ const MenuBar = ({ editor }) => {
           <div className="w-2 h-2 rounded-full border border-gray-200" style={{ backgroundColor: editor.getAttributes('highlight').color || 'transparent' }} />
         </button>
         {showHighlightPicker && (
-          <div className="absolute top-full right-0 sm:left-0 sm:right-auto mt-1 p-2 bg-white rounded-lg shadow-xl border border-gray-100 flex flex-wrap w-[120px] sm:w-auto sm:flex-nowrap gap-1 z-20">
+          <div className="absolute top-full left-1/2 -translate-x-1/2 mt-1 p-2 bg-white rounded-lg shadow-xl border border-gray-100 flex flex-wrap justify-center w-[120px] sm:w-auto sm:flex-nowrap gap-1 z-20">
             {highlights.map(color => (
               <button
                 key={color}
@@ -306,7 +306,7 @@ const RichTextEditor = ({ value, onChange }) => {
         }
     }, [value, editor]);
   return (
-    <div className='w-full border border-gray-100 rounded-2xl overflow-hidden focus-within:border-gray-200 focus-within:ring-2 focus-within:ring-blue-50 transition-all bg-white/50'>
+    <div className='w-full border border-gray-100 rounded-2xl focus-within:border-gray-200 focus-within:ring-2 focus-within:ring-blue-50 transition-all bg-white/50'>
       <MenuBar editor={editor} />
       <EditorContent editor={editor} />
     </div>
