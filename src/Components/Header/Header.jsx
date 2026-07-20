@@ -123,9 +123,9 @@ const Header = ({
 
                 {showNotification && (
                     <Panel
-                        width="w-80"
+                        width="w-[95vw] sm:w-80"
                         height="h-fit max-h-96"
-                        position="absolute top-20 right-10 mt-1"
+                        position="absolute top-20 left-1/2 -translate-x-1/2 sm:translate-x-0 sm:left-auto sm:right-10 mt-1 z-50"
                         onClose={() => setShowNotification(false)}
                     >
                         {/* Panel Header */}

@@ -303,7 +303,7 @@ const NoteModal = ({ isOpen, onClose }) => {
                             </button>
                             {showBgColorPicker && (
                                 <div
-                                    className='absolute bottom-full right-0 sm:left-0 sm:right-auto 
+                                    className='absolute bottom-full left-0 
                                 mb-3 p-1.5 bg-white rounded-2xl shadow-2xl border border-gray-100 flex flex-wrap w-[140px] sm:w-auto sm:flex-nowrap gap-1.5 z-20'>
                                     {[
                                         {
