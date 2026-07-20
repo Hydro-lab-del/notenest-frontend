@@ -142,9 +142,9 @@ const NoteModal = ({ isOpen, onClose }) => {
 
     if (!isOpen) return null;
     return (
-        <div className='fixed inset-0 z-100 flex items-center justify-center p-4  bg-black/20 backdrop-blur-md '>
+        <div className='fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/20 backdrop-blur-md '>
 
-            <div className={`w-full max-w-lg rounded-xl shadow-2xl p-6 transition-colors duration-300 ${resolvedBg}`}>
+            <div className={`w-full max-w-lg rounded-xl shadow-2xl p-6 transition-colors duration-300 max-h-[95vh] overflow-y-auto ${resolvedBg}`}>
 
                 <div className='flex items-center justify-between pt-4 pb-4 mb-4 '>
                     <div>
@@ -303,8 +303,8 @@ const NoteModal = ({ isOpen, onClose }) => {
                             </button>
                             {showBgColorPicker && (
                                 <div
-                                    className='absolute bottom-full left-0 
-                                mb-3 p-1.5 bg-white rounded-2xl shadow-2xl border border-gray-100 flex gap-1.5 z-20'>
+                                    className='absolute bottom-full right-0 sm:left-0 sm:right-auto 
+                                mb-3 p-1.5 bg-white rounded-2xl shadow-2xl border border-gray-100 flex flex-wrap w-[140px] sm:w-auto sm:flex-nowrap gap-1.5 z-20'>
                                     {[
                                         {
                                             class: 'bg-white',

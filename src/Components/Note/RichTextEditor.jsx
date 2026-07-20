@@ -195,7 +195,7 @@ const MenuBar = ({ editor }) => {
         </button>
 
         {showColorPicker && (
-          <div className='absolute top-full left-0 mt-1 p-2 bg-white rounded-lg shadow-xl border border-gray-100 flex gap-1 z-20'>
+          <div className='absolute top-full right-0 sm:left-0 sm:right-auto mt-1 p-2 bg-white rounded-lg shadow-xl border border-gray-100 flex flex-wrap w-[140px] sm:w-auto sm:flex-nowrap gap-1 z-20'>
             {colors.map(color => (
               <button
                 key={color}
@@ -226,7 +226,7 @@ const MenuBar = ({ editor }) => {
           <div className="w-2 h-2 rounded-full border border-gray-200" style={{ backgroundColor: editor.getAttributes('highlight').color || 'transparent' }} />
         </button>
         {showHighlightPicker && (
-          <div className="absolute top-full left-0 mt-1 p-2 bg-white rounded-lg shadow-xl border border-gray-100 flex gap-1 z-20">
+          <div className="absolute top-full right-0 sm:left-0 sm:right-auto mt-1 p-2 bg-white rounded-lg shadow-xl border border-gray-100 flex flex-wrap w-[120px] sm:w-auto sm:flex-nowrap gap-1 z-20">
             {highlights.map(color => (
               <button
                 key={color}
