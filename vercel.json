@@ -1,16 +1,8 @@
 {
   "rewrites": [
     {
-      "source": "/auth/:path*",
-      "destination": "https://notenest-backend-i118.onrender.com/auth/:path*"
-    },
-    {
       "source": "/api/:path*",
-      "destination": "https://notenest-backend-i118.onrender.com/api/:path*"
-    },
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
+      "destination": "https://notenest-backend-i118.onrender.com/:path*"
     }
   ]
 }
