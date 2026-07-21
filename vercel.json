@@ -1,6 +1,14 @@
 {
   "rewrites": [
     {
+      "source": "/auth/:path*",
+      "destination": "https://notenest-backend-junaidilyas102-37ea2561.koyeb.app/auth/:path*"
+    },
+    {
+      "source": "/api/:path*",
+      "destination": "https://notenest-backend-junaidilyas102-37ea2561.koyeb.app/api/:path*"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }

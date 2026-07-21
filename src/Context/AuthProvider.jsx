@@ -3,36 +3,36 @@ import { useEffect, useState } from "react";
 import PageLoader from "../Components/PageLoader";
 import { AuthContext } from "./AuthContext";
 
+// ─── TOKEN SECURITY STRATEGY ─────────────────────────────────────────────────
+// Access token  → memory only (React state). Never persisted. XSS-safe.
+// Refresh token → httpOnly cookie managed entirely by the backend.
+//                 Works reliably because Vercel rewrites proxy /auth/* and
+//                 /api/* to the backend on the SAME origin — so the cookie
+//                 is first-party and never blocked by any browser.
+// User info     → localStorage only (non-sensitive display data for fast UI).
+// ─────────────────────────────────────────────────────────────────────────────
 
 const getStoredUser = () => {
-  try {
-    return JSON.parse(localStorage.getItem('user'));
-  } catch {
-    return null;
-  }
+  try { return JSON.parse(localStorage.getItem('user')); } catch { return null; }
 };
 
 const AuthProvider = ({ children }) => {
 
-  // Access token lives ONLY in memory — never persisted to localStorage
+  // Access token → memory only, NEVER localStorage
   const [accessToken, setAccessToken] = useState(null);
-
-  // Non-sensitive user info from localStorage for fast initial render
+  // Cached user profile for instant UI render (non-sensitive)
   const [user, setUser] = useState(getStoredUser);
-
-  // Start as INIT so we always attempt a token refresh on load
+  // Always start as INIT — the refresh call determines real auth state
   const [status, setStatus] = useState("INIT");
 
-  // On every page load/refresh → ask the backend for a fresh access token
-  // The browser automatically sends the httpOnly refresh-token cookie
   useEffect(() => {
     const initAuth = async () => {
       try {
+        // Cookie is first-party (same origin via Vercel proxy) → always sent
         const res = await api.post("/auth/refresh", {});
         loginSuccess(res.data?.data || res.data);
       } catch (error) {
         console.error("Session refresh failed:", error);
-        // Clear any stale user info and mark as unauthenticated
         localStorage.removeItem('user');
         setUser(null);
         setStatus("UNAUTHENTICATED");
@@ -45,11 +45,11 @@ const AuthProvider = ({ children }) => {
     const userData = data.loggedInUser || data.user;
     const token = data.accessToken;
 
-    // Access token → memory only (secure)
+    // Access token → memory only (secure, lost on refresh → restored by cookie)
     setAccessToken(token);
     setUser(userData);
 
-    // Only non-sensitive user profile data goes to localStorage
+    // Only non-sensitive user profile data persisted for fast initial render
     if (userData) localStorage.setItem('user', JSON.stringify(userData));
 
     if (userData?.isEmailVerified) {
@@ -65,7 +65,6 @@ const AuthProvider = ({ children }) => {
     } catch {
       console.log("Server session already cleared or expired.");
     } finally {
-      // Wipe everything — token from memory, user info from localStorage
       setAccessToken(null);
       setUser(null);
       localStorage.removeItem('user');
