@@ -2,7 +2,11 @@
   "rewrites": [
     {
       "source": "/api/:path*",
-      "destination": "https://notenest-backend-i118.onrender.com/:path*"
+      "destination": "https://notenest-backend-i118.onrender.com/api/:path*"
+    },
+    {
+      "source": "/auth/:path*",
+      "destination": "https://notenest-backend-i118.onrender.com/auth/:path*"
     }
   ]
 }
